@@ -1,0 +1,40 @@
+GAL16V8
+BBC_ULA1
+; DISEN = Display Enable (active high)
+; CURSOR = 6845 CURSOR signal
+; FIN = Flash INhibit bit from control register
+; F = flash bit from palette (highest bit)
+; BIN/GIN/RIN = RGB signal from SAA5050 Teletext (MODE 7)
+; ROUT/GOUT/BOUT = switched RGB output
+; TMODE = Teletext mode input pin from control register
+; HBIN/HGIN/HRIN = RGB input from palette (all other modes)
+;
+
+DISEN NC NC CURSOR FIN F BIN GIN RIN   GND
+  TMODE  NC ROUT GOUT BOUT  HBIN HGIN HRIN NC VCC
+
+HBIN.T = GND
+HGIN.T = GND
+HRIN.T = GND
+
+HBIN.E = GND
+HGIN.E = GND
+HRIN.E = GND
+
+ROUT =   RIN  * TMODE
+       + /HRIN *  F * /FIN * /TMODE * DISEN
+       +  HRIN *  F *  FIN * /TMODE * DISEN
+       + /HRIN * /F * /TMODE * DISEN
+       + CURSOR * DISEN
+
+GOUT =   GIN  * TMODE
+       + /HGIN *  F * /FIN * /TMODE * DISEN
+       +  HGIN *  F *  FIN * /TMODE * DISEN
+       + /HGIN * /F * /TMODE * DISEN
+       + CURSOR * DISEN
+
+BOUT =   BIN  * TMODE
+       + /HBIN *  F * /FIN * /TMODE * DISEN
+       +  HBIN *  F *  FIN * /TMODE * DISEN
+       + /HBIN * /F * /TMODE * DISEN
+       + CURSOR * DISEN

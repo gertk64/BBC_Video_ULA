@@ -1,0 +1,68 @@
+GAL16V8
+BBC_ULA2
+
+; this is the second GAL chip on the ULA replacement board
+;
+; CLK16 is delivered by the mainboard
+; CLK8/4/2/1 are created by an external 4 bit counter
+; DISEN is the DISplay ENable signal to the ULA
+; B2/B3 are the mode configuration bits
+; B4 is the CRTC clock rate select bit (B4=0 is 1MHz, B4=1 is 2 MHz)
+; CRTCLK is the CRT chip clock frequency
+; SHCLK is the shift register (GAL3) clock
+; SHLAT is the shift register latch signal
+; CSAM is the colour sample signal (sampling bits 1,3,5 and 7 of the shift register)
+; COE = color latch output enable
+; A0 = system address line 0 to the ULA
+; LE = latche enable ULA control register (74HC573)
+;
+; by Gert van der Knokke (C)2024
+
+CLK16 CLK8 CLK4 CLK2 CLK1 CS B2 B3 B4 GND
+A0 CRTCLK SHCLK SHLAT CSAM PWR LE COE NC VCC
+
+;
+; CRT clock 1 or 2 MHz
+;
+CRTCLK =  CLK1 * /B4
+        + CLK2 *  B4
+
+; control register latch enable
+LE = /CS * /A0 *  CLK2 * /CLK4 * /CLK8 * /CLK16
+
+;
+; latch RAM data output
+;  that is:
+;        in 2 MHz mode (B4=1) :  CLK2, CLK4 and CLK8
+;        in 1 MHz mode (B4=0) :  CLK1, CLK2, CLK4 and CLK8
+
+SHLAT =   B4 * CLK2 * CLK4 * CLK8
+          + /B4 * CLK1 * CLK2 * CLK4 * CLK8
+
+;
+; shift clock depending on the mode bits B2 and B3
+; 00 = divide by 8 (no standard modes)
+; 01 = divide by 4 (mode 2 and 5)
+; 10 = divide by 2 (mode 1, 4 and 6)
+; 11 = divide by 1 (mode 0 and 3)
+;
+; SHCLK = PIXCLKEN * /CRTCLKEN
+
+SHCLK =      B3 *  B2 * /CLK16 * B4
+          +  B3 * /B2 * /CLK8
+          + /B3 *  B2 * /CLK8 * /CLK4
+          + /B3 * /B2 * /CLK8 * /CLK4 * /CLK2
+
+; generate (buffered) colour sampling clock (fixed at 16 MHz)
+CSAM = CLK16
+
+
+; generate write pulse for the palette SRAM on the rising edge of the 2 MHz clock
+/PWR = /CS * A0 * CLK2 * /CLK4 * /CLK8
+
+
+; enable color latch output when not writing to palette or control register
+COE  = /CS * A0 * CLK2 * /CLK4 * /CLK8
+
+
+;

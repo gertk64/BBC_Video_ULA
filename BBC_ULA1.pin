@@ -1,0 +1,25 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | DISEN    | Input
+   2   | NC       | Input
+   3   | NC       | Input
+   4   | CURSOR   | Input
+   5   | FIN      | Input
+   6   | F        | Input
+   7   | BIN      | Input
+   8   | GIN      | Input
+   9   | RIN      | Input
+  10   | GND      | GND
+  11   | TMODE    | Input
+  12   | NC       | NC
+  13   | ROUT     | Output
+  14   | GOUT     | Output
+  15   | BOUT     | Output
+  16   | HBIN     | Output
+  17   | HGIN     | Output
+  18   | HRIN     | Output
+  19   | NC       | NC
+  20   | VCC      | VCC
+

@@ -1,0 +1,25 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | CLK16    | Input
+   2   | CLK8     | Input
+   3   | CLK4     | Input
+   4   | CLK2     | Input
+   5   | CLK1     | Input
+   6   | CS       | Input
+   7   | B2       | Input
+   8   | B3       | Input
+   9   | B4       | Input
+  10   | GND      | GND
+  11   | A0       | Input
+  12   | CRTCLK   | Output
+  13   | SHCLK    | Output
+  14   | SHLAT    | Output
+  15   | CSAM     | Output
+  16   | PWR      | Output
+  17   | LE       | Output
+  18   | COE      | Output
+  19   | NC       | NC
+  20   | VCC      | VCC
+

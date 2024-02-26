@@ -1,0 +1,28 @@
+GAL20V8
+BBC_ULA3
+;
+; BBC ULA GAL3, the shift register
+;
+; the S input is normally connected to Vcc
+;
+; by Gert van der Knokke (C)2024
+;
+CLK D0 D1 D2 D3 D4 D5 D6 D7 DISEN LD GND
+NC NC Q7 Q6 Q5 Q4 Q3 Q2 Q1 Q0 S VCC
+
+
+Q0.R = D0 * LD + S * /LD
+
+Q1.R = D1 * LD + Q0 * /LD
+
+Q2.R = D2 * LD + Q1 * /LD
+
+Q3.R = D3 * LD + Q2 * /LD
+
+Q4.R = D4 * LD + Q3 * /LD
+
+Q5.R = D5 * LD + Q4 * /LD
+
+Q6.R = D6 * LD + Q5 * /LD
+
+Q7.R = D7 * LD + Q6 * /LD

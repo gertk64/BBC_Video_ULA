@@ -1,0 +1,25 @@
+
+
+                                GAL16V8
+
+                          -------\___/-------
+                    DISEN |  1           20 | VCC
+                          |                 |
+                       NC |  2           19 | NC
+                          |                 |
+                       NC |  3           18 | HRIN
+                          |                 |
+                   CURSOR |  4           17 | HGIN
+                          |                 |
+                      FIN |  5           16 | HBIN
+                          |                 |
+                        F |  6           15 | BOUT
+                          |                 |
+                      BIN |  7           14 | GOUT
+                          |                 |
+                      GIN |  8           13 | ROUT
+                          |                 |
+                      RIN |  9           12 | NC
+                          |                 |
+                      GND | 10           11 | TMODE
+                          -------------------
