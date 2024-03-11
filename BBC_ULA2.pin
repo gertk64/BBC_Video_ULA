@@ -20,6 +20,6 @@
   16   | PWR      | Output
   17   | LE       | Output
   18   | COE      | Output
-  19   | NC       | NC
+  19   | DCLK     | Output
   20   | VCC      | VCC
 

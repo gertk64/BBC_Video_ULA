@@ -15,17 +15,24 @@ BBC_ULA2
 ; COE = color latch output enable
 ; A0 = system address line 0 to the ULA
 ; LE = latche enable ULA control register (74HC573)
+; DCLK = DISEN delay clock
 ;
 ; by Gert van der Knokke (C)2024
 
 CLK16 CLK8 CLK4 CLK2 CLK1 CS B2 B3 B4 GND
-A0 CRTCLK SHCLK SHLAT CSAM PWR LE COE NC VCC
+A0 CRTCLK SHCLK SHLAT CSAM PWR LE COE DCLK VCC
 
 ;
 ; CRT clock 1 or 2 MHz
 ;
 CRTCLK =  CLK1 * /B4
         + CLK2 *  B4
+
+;/DCLK =  B4 * CLK2 * CLK4 * CLK8
+;          + /B4 * CLK1 * CLK2 * CLK4 * CLK8
+
+/DCLK =   CLK2 * /B4
+        + CLK4 *  B4
 
 ; control register latch enable
 LE = /CS * /A0 *  CLK2 * /CLK4 * /CLK8 * /CLK16
