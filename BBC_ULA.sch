@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "BBC ULA replacement"
-Date "2024-02-21"
-Rev "0.1"
+Date "2024-03-11"
+Rev "0.1a"
 Comp "KGE"
 Comment1 "Gert van der Knokke"
 Comment2 "(C)2024"
@@ -79,7 +79,7 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS175" H 6650 1950 50  0001 C CNN
 	1    6650 1950
 	1    0    0    -1  
 $EndComp
-Text GLabel 1000 1450 0    50   Input ~ 0
+Text GLabel 3900 6250 0    50   Input ~ 0
 DISEN
 Text GLabel 3650 4950 0    50   Input ~ 0
 A0
@@ -100,7 +100,7 @@ RIN
 Text GLabel 1000 2350 0    50   Input ~ 0
 TMODE
 Wire Wire Line
-	1000 1450 1500 1450
+	3900 6250 4400 6250
 Wire Wire Line
 	1100 1750 1500 1750
 Wire Wire Line
@@ -1055,4 +1055,130 @@ F 3 "74xx/74hc573.pdf" H 6700 4550 50  0001 C CNN
 	1    6700 4550
 	1    0    0    -1  
 $EndComp
+$Comp
+L 74xx:74HC74 U10
+U 1 1 65EFB767
+P 4700 6350
+F 0 "U10" H 4700 6831 50  0000 C CNN
+F 1 "74HC74" H 4700 6740 50  0000 C CNN
+F 2 "" H 4700 6350 50  0001 C CNN
+F 3 "74xx/74hc_hct74.pdf" H 4700 6350 50  0001 C CNN
+	1    4700 6350
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC74 U11
+U 1 1 65EFC4D3
+P 5750 6350
+F 0 "U11" H 5750 6831 50  0000 C CNN
+F 1 "74HC74" H 5750 6740 50  0000 C CNN
+F 2 "" H 5750 6350 50  0001 C CNN
+F 3 "74xx/74hc_hct74.pdf" H 5750 6350 50  0001 C CNN
+	1    5750 6350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 6250 5450 6250
+Wire Wire Line
+	4400 6350 4200 6350
+Wire Wire Line
+	4200 6350 4200 6950
+Wire Wire Line
+	4200 6950 5250 6950
+Wire Wire Line
+	5250 6950 5250 6350
+Wire Wire Line
+	5250 6350 5450 6350
+Text GLabel 1000 1450 0    50   Input ~ 0
+DISENDLY
+Wire Wire Line
+	1000 1450 1500 1450
+Text GLabel 6450 6250 2    50   Output ~ 0
+DISENDLY
+Wire Wire Line
+	6050 6250 6450 6250
+Wire Wire Line
+	4700 6050 5250 6050
+Wire Wire Line
+	5250 5700 5250 6050
+Connection ~ 5250 6050
+Wire Wire Line
+	5250 6050 5750 6050
+$Comp
+L power:VCC #PWR019
+U 1 1 65F8D4A7
+P 5250 5700
+F 0 "#PWR019" H 5250 5550 50  0001 C CNN
+F 1 "VCC" H 5267 5873 50  0000 C CNN
+F 2 "" H 5250 5700 50  0001 C CNN
+F 3 "" H 5250 5700 50  0001 C CNN
+	1    5250 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR018
+U 1 1 65F8DE3C
+P 4950 6750
+F 0 "#PWR018" H 4950 6600 50  0001 C CNN
+F 1 "VCC" H 4967 6923 50  0000 C CNN
+F 2 "" H 4950 6750 50  0001 C CNN
+F 3 "" H 4950 6750 50  0001 C CNN
+	1    4950 6750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR020
+U 1 1 65F8E5A7
+P 6000 6750
+F 0 "#PWR020" H 6000 6600 50  0001 C CNN
+F 1 "VCC" H 6017 6923 50  0000 C CNN
+F 2 "" H 6000 6750 50  0001 C CNN
+F 3 "" H 6000 6750 50  0001 C CNN
+	1    6000 6750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 6650 4700 6750
+Wire Wire Line
+	4700 6750 4950 6750
+Wire Wire Line
+	5750 6650 5750 6750
+Wire Wire Line
+	5750 6750 6000 6750
+Text GLabel 3950 6950 0    50   Input ~ 0
+DDLYCLK
+Wire Wire Line
+	4200 6950 3950 6950
+Connection ~ 4200 6950
+Text GLabel 5100 4050 2    50   Output ~ 0
+DDLYCLK
+Wire Wire Line
+	5000 4050 5100 4050
+Text Notes 4000 5800 0    50   ~ 0
+Display Enable delay circuit
+$Comp
+L power:VCC #PWR?
+U 1 1 65FF5D72
+P 1050 4100
+F 0 "#PWR?" H 1050 3950 50  0001 C CNN
+F 1 "VCC" H 1067 4273 50  0000 C CNN
+F 2 "" H 1050 4100 50  0001 C CNN
+F 3 "" H 1050 4100 50  0001 C CNN
+	1    1050 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 4100 1400 4100
+Wire Wire Line
+	1600 4200 1400 4200
+Wire Wire Line
+	1400 4200 1400 4100
+Connection ~ 1400 4100
+Wire Wire Line
+	1400 4100 1050 4100
+Wire Wire Line
+	1600 4300 1400 4300
+Wire Wire Line
+	1400 4300 1400 4200
+Connection ~ 1400 4200
 $EndSCHEMATC
